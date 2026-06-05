@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Bali</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #333;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 10px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header h1 {
+            color: #009688;
+            font-size: 22px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #009688;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('bali-hero.jpg') center/cover no-repeat;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 80px;
+        }
+
+        .hero h2 {
+            font-size: 36px;
+            max-width: 500px;
+            margin-bottom: 15px;
+        }
+
+        .hero button {
+            width: 240px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            background: #009688;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hero button:hover {
+            background: #00796b;
+        }
+
+        /* Section Rekomendasi (preview di homepage) */
+        #homeRekomendasi {
+            padding: 50px 80px;
+            background-color: #fff;
+        }
+
+        #homeRekomendasi h3 {
+            color: #009688;
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            width: 230px;
+            overflow: hidden;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .card .info {
+            padding: 10px;
+        }
+
+        .card .info h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #009688;
+        }
+
+        .rating {
+            color: #ffb400;
+        }
+
+        /* Halaman detail rekomendasi (yang awalnya disembunyikan) */
+        #detailRekomendasi {
+            display: none;
+            padding: 50px 80px;
+            background: #fff;
+        }
+
+        #detailRekomendasi h2 {
+            color: #009688;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .destinasi {
+            display: flex;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .destinasi img {
+            width: 200px;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .destinasi h3 {
+            color: #009688;
+        }
+
+        .destinasi button {
+            background: #009688;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .back-btn {
+            background: #009688;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: #00796b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Explore Bali</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="scrollToRekomendasi()">Rekomendasi Destinasi</a></li>
+                <li><a href="#">Populer</a></li>
+                <li><a href="#">Wishlist</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Temukan Destinasi Populer di Pulau Bali</h2>
+        <button onclick="scrollToRekomendasi()">Jelajahi Sekarang</button>
+    </section>
+
+    <!-- Rekomendasi (Preview di Homepage) -->
+    <section id="homeRekomendasi">
+        <h3>Rekomendasi Destinasi</h3>
+        <div class="card-grid">
+            <div class="card" onclick="openDetailRekomendasi()">
+                <img src="tanahlot.jpg" alt="Tanah Lot">
+                <div class="info">
+                    <h4>Tanah Lot</h4>
+                    <p class="rating">★★★★★</p>
+                </div>
+            </div>
+            <div class="card" onclick="openDetailRekomendasi()">
+                <img src="beratan.jpg" alt="Danau Beratan">
+                <div class="info">
+                    <h4>Danau Beratan</h4>
+                    <p class="rating">★★★★☆</p>
+                </div>
+            </div>
+            <div class="card" onclick="openDetailRekomendasi()">
+                <img src="kuta.jpg" alt="Pantai Kuta">
+                <div class="info">
+                    <h4>Pantai Kuta</h4>
+                    <p class="rating">★★★★★</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Halaman Rekomendasi Detail -->
+    <section id="detailRekomendasi">
+        <button class="back-btn" onclick="closeDetailRekomendasi()">← Kembali</button>
+        <h2>Rekomendasi Destinasi</h2>
+
+        <div class="destinasi">
+            <img src="tanahlot.jpg" alt="Tanah Lot">
+            <div>
+                <h3>Tanah Lot</h3>
+                <p>Jam Buka: 06.00–19.00</p>
+                <p>Harga Tiket: Rp 20.000–60.000</p>
+                <p>Tempat wisata ikonik di atas batu karang besar di tepi laut.</p>
+                <button>Lihat Lokasi</button>
+            </div>
+        </div>
+
+        <div class="destinasi">
+            <img src="beratan.jpg" alt="Danau Beratan">
+            <div>
+                <h3>Danau Beratan</h3>
+                <p>Jam Buka: 07.00–17.00</p>
+                <p>Harga Tiket: Rp 30.000–50.000</p>
+                <p>Danau indah di Bedugul dengan pura ikonik di atas air.</p>
+                <button>Lihat Lokasi</button>
+            </div>
+        </div>
+
+        <div class="destinasi">
+            <img src="ubud.jpg" alt="Monkey Forest">
+            <div>
+                <h3>Monkey Forest Ubud</h3>
+                <p>Jam Buka: 08.00–17.00</p>
+                <p>Harga Tiket: Rp 60.000</p>
+                <p>Hutan alami yang menjadi habitat ratusan monyet di Ubud.</p>
+                <button>Lihat Lokasi</button>
+            </div>
+        </div>
+
+        <div class="destinasi">
+            <img src="penglipuran.jpg" alt="Desa Penglipuran">
+            <div>
+                <h3>Desa Penglipuran</h3>
+                <p>Jam Buka: 08.00–18.00</p>
+                <p>Harga Tiket: Rp 25.000</p>
+                <p>Desa adat yang terkenal akan kebersihan dan keasliannya.</p>
+                <button>Lihat Lokasi</button>
+            </div>
+        </div>
+
+        <div class="destinasi">
+            <img src="melasti.jpg" alt="Pantai Melasti">
+            <div>
+                <h3>Pantai Melasti</h3>
+                <p>Jam Buka: 06.00–19.00</p>
+                <p>Harga Tiket: Rp 20.000</p>
+                <p>Pantai cantik dengan tebing dan pemandangan sunset menawan.</p>
+                <button>Lihat Lokasi</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function scrollToRekomendasi() {
+            document.getElementById('homeRekomendasi').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openDetailRekomendasi() {
+            document.getElementById('homeRekomendasi').style.display = 'none';
+            document.querySelector('.hero').style.display = 'none';
+            document.getElementById('detailRekomendasi').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function closeDetailRekomendasi() {
+            document.getElementById('detailRekomendasi').style.display = 'none';
+            document.querySelector('.hero').style.display = 'flex';
+            document.getElementById('homeRekomendasi').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eksplore Bali</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Reset Dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* --- Navbar (Header) --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #2e8b57; /* Warna logo disesuaikan dengan footer/judul */
+        }
+
+        .navbar nav a {
+            text-decoration: none;
+            color: #555;
+            margin: 0 15px;
+            font-weight: 600;
+        }
+
+        .login-btn {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            height: 50vh; /* Tinggi yang cukup */
+            background-image: url('path/to/hero-background.jpg'); /* Ganti dengan URL gambar tebing Bali */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 50px;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Efek overlay gelap samar */
+            background: rgba(0, 0, 0, 0.2); 
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding-left: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .search-box {
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            width: 350px; /* Lebar kotak pencarian */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            font-size: 1em;
+            color: #333;
+        }
+
+        .search-box i {
+            color: #999;
+            margin-left: 10px;
+        }
+
+        .wonderful-tag {
+            position: absolute;
+            right: 50px;
+            bottom: 20px;
+            z-index: 2;
+            color: white;
+            text-align: right;
+            font-size: 1.2em;
+            font-weight: 600;
+            line-height: 1.1;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* --- Keunikan Bali Section --- */
+        .bali-unique {
+            padding: 30px 50px 50px 50px;
+            background-color: #fff;
+        }
+
+        .bali-unique h2 {
+            font-size: 1.8em;
+            color: #2e8b57; /* Warna hijau tua */
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Bagian teks lebih lebar dari gambar samping */
+            gap: 30px;
+        }
+
+        .content-wrapper p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .side-image {
+            width: 100%;
+            height: 300px;
+            background-color: #ddd; /* Placeholder */
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            background-image: url('path/to/statue.jpg'); /* Ganti dengan URL gambar patung */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* --- Rekomendasi Destinasi Section --- */
+        .recommendation {
+            padding: 50px;
+            background-color: #f8f8f8;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            color: #2e8b57;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .filter-buttons {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-buttons button {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #555;
+            font-weight: 600;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* Container untuk Card yang bisa di-scroll */
+        .card-container {
+            display: flex;
+            overflow-x: scroll; /* Kunci untuk bisa di-scroll horizontal */
+            padding-bottom: 20px; /* Ruang untuk scrollbar */
+            gap: 20px;
+            /* Menyembunyikan scrollbar di beberapa browser (opsional) */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .card-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
+
+        .card {
+            flex: 0 0 auto; /* Penting agar card tidak meregang/menciut */
+            width: 280px; /* Lebar tetap untuk setiap card */
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin: 10px 15px 5px 15px;
+        }
+
+        .rating {
+            margin: 0 15px;
+            color: gold; /* Warna bintang */
+        }
+
+        /* --- Destinasi Populer Section --- */
+        .popular-destination {
+            padding: 50px;
+            background-color: #fff;
+        }
+
+        .popular-card {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            border: 1px solid #eee;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .popular-image-box {
+            flex: 1;
+            max-width: 45%;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .popular-image-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .popular-info {
+            flex: 1;
+            max-width: 55%;
+        }
+
+        .popular-info h3 {
+            font-size: 1.8em;
+            color: #2e8b57;
+            margin-bottom: 15px;
+        }
+
+        .popular-info p {
+            margin-bottom: 10px;
+        }
+
+        .ticket-price {
+            font-weight: 600;
+        }
+
+        .map-btn {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 20px;
+            float: right; /* Untuk menempatkan tombol di kanan bawah */
+        }
+
+        /* --- Wishlist Section --- */
+        .wishlist-section {
+            padding: 50px;
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .add-wishlist-box {
+            width: 250px;
+            height: 250px;
+            border: 3px dashed #ccc;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .plus-icon {
+            font-size: 4em;
+            line-height: 1;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .plus-icon i {
+            font-weight: 300;
+        }
+
+        .add-text {
+            font-weight: 600;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #2e8b57; /* Warna hijau tua di bawah */
+            color: white;
+            padding: 30px 50px;
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .footer-logo {
+            flex: 1;
+        }
+        .footer-logo img {
+            width: 50px; /* Ukuran logo di footer */
+            /* filter: brightness(0) invert(1); / / Jika logo asli berwarna hitam, ini akan membuatnya putih */
+        }
+        
+        /* Simulasikan logo pura bali berwarna putih */
+        .footer-logo {
+            background-color: #f8f8f8;
+            height: 50px;
+            width: 50px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            color: #2e8b57;
+            font-weight: bold;
+        }
+
+
+        .footer-columns {
+            flex: 3;
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer h4 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Responsive Sederhana (Untuk tampilan mobile/kecil) */
+        @media (max-width: 768px) {
+            .navbar, .hero, .bali-unique, .recommendation, .popular-destination, .footer {
+                padding: 15px 20px;
+            }
+
+            .navbar nav {
+                display: none; /* Sembunyikan navigasi di mobile */
+            }
+
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+            
+            .content-wrapper {
+                grid-template-columns: 1fr; /* Teks dan gambar menjadi tumpukan */
+            }
+
+            .popular-card {
+                flex-direction: column; /* Gambar dan info menumpuk */
+            }
+            
+            .popular-image-box, .popular-info {
+                max-width: 100%;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .footer-columns {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .map-btn {
+                float: none; /* Tombol menjadi normal di mobile */
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Eksplore</div>
+        <nav>
+            <a href="#">Rekomendasi Destinasi</a>
+            <a href="#">Populer Destinasi</a>
+            <a href="#">Wishlist</a>
+        </nav>
+        <button class="login-btn">Login</button>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Temukan Destinasi Populer<br>di Pulau Bali</h1>
+                <div class="search-box">
+                    <input type="text" placeholder="Cari destinasi...">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="wonderful-tag">wonderful<br>indonesia</div>
+            </section>
+
+        <section class="bali-unique">
+            <h2>Keunikan Bali yang menawan</h2>
+            <div class="content-wrapper">
+                <div>
+                    <p>
+                        Tidak ada tempat wisata lain seperti Bali. Perpaduan ajaib antara budaya yang penuh warna, penduduk yang ramah, alam yang menakjubkan, beragam aktivitas yang tak terhitung jumlahnya, cuaca tropis, kuliner yang lezat, kehidupan malam yang semarak, dan akomodasi yang indah menjadikannya pilihan terbaik sebagai destinasi wisata.
+                    </p>
+                    <p>
+                        Beberapa platform pariwisata dunia juga telah menganugerahkan berbagai macam penghargaan kepada Bali sebagai salah satu destinasi favorit yang setidaknya harus dikunjungi sekali dalam hidup Anda. Berapapun usia, anggaran liburan, maupun kegiatan favorit Anda, selalu akan ada sesuatu yang menyenangkan untuk dijelajahi dan dinikmati oleh semua kalangan.
+                    </p>
+                    <p>
+                        Bali.com berdedikasi penuh untuk membuat perencanaan perjalanan Anda lebih mudah. Jelajahi tips yang dapat diandalkan & bermanfaat tentang Bali sehingga Anda dapat menikmati pengalaman liburan terbaik.
+                    </p>
+                </div>
+                <div class="side-image">
+                    </div>
+            </div>
+        </section>
+
+        <section class="recommendation">
+            <h2 class="section-title">Rekomendasi Destinasi</h2>
+            <div class="filter-buttons">
+                <button>Nama Destinasi</button>
+                <button>Kategori Wisata</button>
+                <button>Lokasi</button>
+                <button>Rating</button>
+            </div>
+
+            <div class="card-container">
+                <div class="card">
+                    <img src="path/to/pantai-kuta.jpg" alt="Pantai Kuta">
+                    <div class="card-title">Pantai Kuta</div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="path/to/gunung-agung.jpg" alt="Gunung Agung">
+                    <div class="card-title">Gunung Agung</div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="path/to/tegalalang.jpg" alt="Tegalalang">
+                    <div class="card-title">Tegalalang</div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="path/to/pura-tanah-lot.jpg" alt="Pura Tanah Lot">
+                    <div class="card-title">Pura Tanah Lot</div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="path/to/monkey-forest.jpg" alt="Monkey Forest">
+                    <div class="card-title">Monkey Forest</div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="popular-destination">
+            <h2 class="section-title">Destinasi Populer</h2>
+            <div class="popular-card">
+                <div class="popular-image-box">
+                    <img src="path/to/danau-beratan.jpg" alt="Danau Beratan">
+                    </div>
+                <div class="popular-info">
+                    <h3>Danau Beratan</h3>
+                    <p>
+                        Destinasi ini tidak memiliki jam tetap (buka setiap saat).
+                    </p>
+                    <p class="ticket-price">
+                        Harga Tiket: Rp.45.000-100.000
+                    </p>
+                    <p>
+                        Wisata yang sangat indah untuk menikmati sunrise/sunset
+                    </p>
+                    <button class="map-btn">Peta lokasi</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="wishlist-section">
+            <div class="add-wishlist-box">
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+                <div class="add-text">Tambah Wishlist</div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <i class="fas fa-mountain"></i>
+        </div>
+        <div class="footer-columns">
+            <div class="column">
+                <h4>Suport</h4>
+                <ul>
+                    <li>Status Network</li>
+                    <li>Google Map Suport</li>
+                </ul>
+            </div>
+            <div class="column">
+                <h4>Layanan</h4>
+                <ul>
+                    <li>Wishlist</li>
+                    <li>Populer Destinasi</li>
+                    <li>Rekomendasi Destinasi</li>
+                </ul>
+            </div>
+            <div class="column">
+                <h4>Contac us</h4>
+                <ul>
+                    <li>Email : abeifabrino@gmail.com</li>
+                    <li>Email : Akordiean@gmail.com</li>
+                    <li>Mobile : 082335852518</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page Lengkap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: #1e293b;
+            color: #fff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('gambardepan.png.png') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            padding: 12px 25px;
+            background: #cccc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .hero button:hover {
+            background: #ccc;
+        }
+
+        .section {
+            padding: 60px 50px;
+            text-align: center;
+        }
+
+        .section h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial {
+            background: #f9fafb;
+            padding: 60px 50px;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card h4 {
+            color: #0284c7;
+        }
+
+        .pricing-card {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.03);
+        }
+
+        .pricing-card h4 {
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .pricing-card p {
+            margin-bottom: 15px;
+        }
+
+        .pricing-card button {
+            padding: 10px 20px;
+            background: #38bdf8;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .faq-item {
+            text-align: left;
+            margin: 20px auto;
+            max-width: 700px;
+        }
+
+        .faq-item h4 {
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            padding: 12px 25px;
+            background: #38bdf8;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background: #0284c7;
+        }
+
+        footer {
+            background: #1e293b;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Abelawww</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#features">Fitur</a></li>
+                <li><a href="#pricing">Harga</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h2>Selamat Datang di Website Kami</h2>
+        <p>Kami menghadirkan solusi terbaik untuk bisnis Anda dengan teknologi modern yang memudahkan.</p>
+        <button>Mulai Sekarang</button>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+        <h3>Fitur Unggulan</h3>
+        <p>Berbagai layanan yang kami tawarkan untuk mendukung perkembangan bisnis Anda.</p>
+        <div class="cards">
+            <div class="card">🚀 Cepat & Efisien</div>
+            <div class="card">🔒 Aman & Terpercaya</div>
+            <div class="card">📱 Mudah Digunakan</div>
+        </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section class="testimonial" id="testimoni">
+        <h3>Apa Kata Mereka</h3>
+        <div class="testimonial-card">
+            <p>"Layanan luar biasa! Website kami kini jauh lebih cepat."</p>
+            <h4>- Abelllaa, Web Developer</h4>
+        </div>
+        <div class="testimonial-card">
+            <p>"Dukungan teknisnya cepat dan profesional, sangat puas!"</p>
+            <h4>- mariana, Entrepreneur</h4>
+        </div>
+    </section>
+
+    <!-- Paket Harga -->
+    <section class="section" id="pricing">
+        <h3>Paket Harga</h3>
+        <div class="cards">
+            <div class="pricing-card">
+                <h4>Basic</h4>
+                <p>Rp 100.000 / bulan</p>
+                <p>Fitur dasar untuk bisnis kecil.</p>
+                <button>Pilih Paket</button>
+            </div>
+            <div class="pricing-card">
+                <h4>Pro</h4>
+                <p>Rp 250.000 / bulan</p>
+                <p>Solusi lengkap dengan support premium.</p>
+                <button>Pilih Paket</button>
+            </div>
+            <div class="pricing-card">
+                <h4>Enterprise</h4>
+                <p>Rp 500.000 / bulan</p>
+                <p>Untuk bisnis besar dengan kebutuhan tinggi.</p>
+                <button>Pilih Paket</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <h3>Pertanyaan Umum</h3>
+        <div class="faq-item">
+            <h4>Apakah ada masa trial gratis?</h4>
+            <p>Ya, kami menyediakan masa trial selama 7 hari tanpa biaya.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Bagaimana cara upgrade paket?</h4>
+            <p>Anda dapat menghubungi tim kami atau langsung melalui dashboard akun Anda.</p>
+        </div>
+    </section>
+
+    <!-- Hubungi Kami -->
+    <section class="section" id="contact">
+        <h3>Hubungi Kami</h3>
+        <form>
+            <label>Nama</label>
+            <input type="text" placeholder="Masukkan nama Anda" required />
+            <label>Email</label>
+            <input type="email" placeholder="Masukkan email Anda" required />
+            <label>Pesan</label>
+            <textarea rows="5" placeholder="Tulis pesan Anda..." required></textarea>
+            <button type="submit">Kirim Pesan</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 abellaawwwww. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

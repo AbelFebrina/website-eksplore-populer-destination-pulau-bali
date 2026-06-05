@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reguler</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #4b6361;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #4b6361;
+            color: white;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        /* Tombol kembali */
+        .back-btn {
+            position: absolute;
+            left: 10px;
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Container putih tengah */
+        .container {
+            width: 60%;
+            margin: 30px auto;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        /*  SPACE + LOGO DI ATAS CARD AMED  */
+        .top-logo-container {
+            width: 100%;
+            height: 60px;
+            /* space kosong */
+            position: relative;
+            margin-bottom: -10px;
+            /* biar card naik sedikit */
+        }
+
+        .top-logo-container img {
+            position: absolute;
+            right: 20px;
+            top: 5px;
+            height: 40px;
+        }
+
+        /* space */
+
+        /* Kartu destinasi */
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            width: 95%;
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .card img {
+            width: 30%;
+            height: 180px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            width: 45%;
+        }
+
+        .card-content h2 {
+            margin: 0;
+            color: #3a5f5c;
+        }
+
+        .card-content p {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                width: 85%;
+                padding: 20px;
+            }
+
+            .card {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .card img {
+                width: 100%;
+                height: 200px;
+            }
+
+            .card-content {
+                width: 100%;
+            }
+
+            header h1 {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 16px;
+            }
+
+            .back-btn {
+                font-size: 20px;
+                left: 8px;
+            }
+
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            .card img {
+                height: 150px;
+            }
+
+            .card-content p {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="back-btn">←</a>
+        <h1>Reguler</h1>
+    </header>
+
+    <div class="container">
+
+        <!-- LOGO DI ATAS CARD AMED -->
+        <div class="top-logo-container">
+            <img src="logoRekomendasi.png" alt="Logo">
+        </div>
+
+        <!-- 1. Garuda Wisnu Kencana -->
+        <div class="card">
+            <img src="GarudaWisnuKencana.png" alt="GarudaWisnuKencana">
+            <div class="card-content">
+                <h2>GarudaWisnuKencana</h2>
+                <p>Destinasi ini tidak memiliki jam tetap (buka setiap saat). </p>
+                <p><b>Harga Tiket; 80.000</b></p>
+                <p>Patung GWK memiliki tinggi 121 meter, menjadikannya salah satu patung tertinggi di dunia. Angka ini
+                    bahkan mengungguli Patung Liberty di Amerika Serikat.
+                </p>
+            </div>
+        </div>
+
+        <!-- 2. Desa Panglipuran -->
+        <div class="card">
+            <img src="DesaPanglipuran.png" alt="DesaPanglipuran">
+            <div class="card-content">
+                <h2>DesaPanglipuran</h2>
+                <p>Jam Buka : pukul 06.00 - 19.00.</p>
+                <p><b>Harga tiket : (Dewasa)
+                        Rp.25.000
+                        (Anak-Anak)
+                        Rp.15.000</b></p>
+                <p>kebersihannya yang luar biasa, Serta tata ruang tradisional yang unik dan teratur,Menjadikan daya
+                    tarik tersendiri </p>
+            </div>
+        </div>
+
+        <!-- 3. Monkey Forest Ubud-->
+        <div class="card">
+            <img src="MonkeyForestUbud.png" alt="MonkeyForestUbud">
+            <div class="card-content">
+                <h2>MonkeyForestUbud</h2>
+                <p>Jam Buka : pukul 09.00-17.00</p>
+                <p><b>Harga tiket : (Dewasa)
+                        Rp.80.000-100.000
+                        (Anak-Anak)
+                        Rp.60.000-80.000</b></p>
+                <p>perpaduan keindahan alamnya yang menawan, Menjadikan nya sebuah destinasi wisata yang indah.</p>
+            </div>
+        </div>
+
+        <!-- 4. Bedugul -->
+        <div class="card">
+            <img src="Bedugul.png" alt="Bedugul">
+            <div class="card-content">
+                <h2>Bedugul</h2>
+                <p>Jam Buka; 08.00 - 19.00 </p>
+                <p><b>Harga Tiket; Rp15.500-40.000(WNI)
+                        Rp50.000(WNA)</b></p>
+                <p>Wisata yang sangat indah untuk menikmati sunrise/sunset.</p>
+            </div>
+        </div>
+        <!-- 5.Tegalellang -->
+        <div class="card">
+            <img src="Tengalellang.png" alt="Tegalellang">
+            <div class="card-content">
+                <h2>Tengalellang</h2>
+                <p>Destinasi ini tidak memiliki jam tetap (buka setiap saat). </p>
+                <p><b>Harga Tiket; Rp10.000-25.000(WNI)
+                        Rp50.000(WNA)</b></p>
+                <p>Destinasi ini memiliki pemandangan sawah hijau dilereng bukit yang ikonik dan menjadi daya tarik.</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

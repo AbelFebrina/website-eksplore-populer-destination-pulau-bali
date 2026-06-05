@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eksplore Bali</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            height: 90vh;
+            background: white;
+            border-radius: 30px;
+            display: flex;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            flex-direction: row;
+        }
+
+
+        .login-card {
+            width: 40%;
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            margin-left: 230px;
+            z-index: 10;
+            border-radius: 0 15px 0 15px;
+            max-height: px;
+            align-items: center;
+            align-content: center;
+            margin-top: 10px;
+        }
+
+        .login-card h2 {
+            font-size: 22px;
+            font-weight: 600;
+            border-bottom: 2px solid #1c6c65;
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 40px;
+        }
+
+        .icon {
+            font-size: 20px;
+            margin-right: 6px;
+        }
+
+        .input-box {
+            margin-bottom: 25px;
+        }
+
+        .input-box label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            background: #f1f1f1;
+            outline: none;
+            font-size: 14px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .btn-login {
+            width: 150px;
+            padding: 12px;
+            border: none;
+            background: #1c6c65;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 20px;
+            transition: 0.3s ease-in-out;
+            transform: scale(1);
+        }
+
+        .btn-login:hover {
+            background: #14514d;
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-login:active {
+            transform: scale(0.95);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        }
+
+
+        .right-section {
+            width: 60%;
+            background: #fefefe;
+            padding: 50px;
+            position: relative;
+            font-size: 40px;
+            font-weight: 700px;
+            margin-top: 100px;
+        }
+
+        .bali-img {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 600px;
+            height: 580px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .login-card {
+                width: 100%;
+                padding: 40px;
+            }
+
+            .right-section {
+                width: 100%;
+                padding: 30px;
+            }
+
+            .right-section h1 {
+                font-size: 32px;
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .bali-img {
+                position: relative;
+                width: 70%;
+                display: block;
+                margin: 0 auto;
+                margin-top: -300px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .login-card h2 {
+                font-size: 20px;
+                text-align: center;
+            }
+
+            .btn-login {
+                width: 100%;
+            }
+
+            .right-section h1 {
+                font-size: 28px;
+            }
+
+            .bali-img {
+                width: 85%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="login-card">
+            <a href="DashboardAdmin.html">
+                <h2><span class="icon"></span> Login</h2>
+
+                <div class="input-box">
+                    <label>Email</label>
+                    <input type="text" placeholder="Email">
+                </div>
+
+                <div class="input-box">
+                    <label>Password</label>
+                    <input type="password" placeholder="Password">
+                </div>
+
+                <button class="btn-login">Login</button>
+        </div>
+
+        <div class="right-section">
+            <img src="imgAdmin.png" class="bali-img" alt="Bali Illustration">
+        </div>
+
+    </div>
+
+</body>
+
+</html>

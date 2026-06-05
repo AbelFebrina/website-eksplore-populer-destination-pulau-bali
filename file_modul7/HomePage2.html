@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eksplore Destinasi Populer di Bali</title>
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background: #ffffff;
+            color: #333;
+            padding: 5px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo img {
+            margin-top: -4px;
+
+        }
+
+        header h1 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #009688;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #009688;
+        }
+
+        /*PROFILE ICON */
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #009688;
+        }
+
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+                url('background.bali.png') center/cover no-repeat;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 80px;
+        }
+
+        .hero h2 {
+            font-size: 36px;
+            max-width: 500px;
+            margin-bottom: 15px;
+        }
+
+        .hero button {
+            width: 40px;
+            padding: 8px 10px;
+            border: 1px solid #fff;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hero button:hover {
+            background: white;
+            color: #009688;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            height: 75vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+                url('background.bali.png') center/cover no-repeat;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 50px;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            max-width: 450px;
+        }
+
+        /* SEARCH BOX */
+        .search-box {
+            width: 420px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 30px;
+
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-box input {
+            flex: 1;
+            height: 100%;
+            border: none;
+            background: transparent;
+            outline: none;
+            color: white;
+            font-size: 15px;
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .search-box button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+
+
+        /* SECTION KEUNIKAN BALI */
+        .keunikan-bali {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 80px 0px 80px;
+            gap: 5rem;
+            background: #fff;
+        }
+
+        .keunikan-bali img {
+            width: 15%;
+            border-radius: 12px;
+            object-fit: cover;
+            height: 230px;
+            margin-bottom: 55px;
+            gap: 5rem;
+        }
+
+        .keunikan-bali h3 {
+            color: #009688;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .keunikan-bali p {
+            font-size: -10px;
+            margin-bottom: 15px;
+        }
+
+        /* REKOMENDASI DESTINASI */
+
+        .recommendation {
+            padding: 50px;
+            background-color: #f8f8f8;
+        }
+
+        .keunikan-bali-title {
+            font-size: 1.5em;
+            color: #2e8b57;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .filter-buttons {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-buttons button {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #555;
+            font-weight: 600;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* REKOMENDASI DESTINASI (horizontal scroll) */
+        .cards {
+            padding: 30px 20px;
+            background-color: #f8fafc;
+        }
+
+        .cards h3 {
+            font-size: 22px;
+            color: #009688;
+            margin-bottom: 16px;
+        }
+
+        /* Wrapper untuk tombol scroll (opsional) */
+        .cards-wrapper {
+            position: relative;
+        }
+
+        /* Container horizontal scroll */
+        .card-container {
+            display: flex;
+            gap: 18px;
+            padding: 12px 6px;
+            overflow-x: auto;
+            /* penting: aktifkan scroll horizontal */
+            scroll-behavior: smooth;
+            /* scroll halus */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* sembunyikan scrollbar (tetap bisa discroll) */
+        .card-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .card-container::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.12);
+            border-radius: 8px;
+        }
+
+        /* tiap card */
+        .card {
+            flex: 0 0 260px;
+            /* tetap 260px lebar, jangan flex-grow agar horizontal */
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            transition: transform .2s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 10px 12px;
+        }
+
+        .card .rating {
+            margin: 0 12px 12px;
+            color: #ffb400;
+        }
+
+        /* tombol tambah wishlist */
+        .card button {
+            width: calc(100% - 24px);
+            margin: 0 12px 16px;
+            padding: 10px;
+            background: #009688;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* tombol panah kiri/kanan (opsional) */
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .scroll-btn.left {
+            left: 6px;
+        }
+
+        .scroll-btn.right {
+            right: 6px;
+        }
+
+        /* responsive: di layar kecil tetap scroll */
+        @media (max-width: 600px) {
+            .card {
+                flex: 0 0 78%;
+            }
+
+            /* card lebih lebar di mobile, bisa digeser */
+            .card img {
+                height: 180px;
+            }
+        }
+
+
+        /* Destinasi Populer */
+        .populer {
+            background-color: #fff;
+            padding: 50px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* JUDUL */
+        .judul-populer {
+            margin-left: 80px;
+            margin-top: 20px;
+            margin-bottom: -10px;
+            color: #009688;
+            padding-left: 5;
+            padding: -30px;
+        }
+
+
+        /* GAMBAR */
+        .populer img {
+            width: 25%;
+            border-radius: 5px;
+        }
+
+        .populer .desc {
+            width: -35%;
+        }
+
+        .populer h3 {
+            color: #009688;
+            margin-bottom: -20px;
+            padding: 15px;
+        }
+
+        .populer button {
+            background: #009688;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+
+        /* FOOTER */
+        footer {
+            width: 100%;
+            background: #004d40;
+            color: white;
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-around;
+            font-size: 14px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo img {
+            margin-top: -4px;
+        }
+
+
+        /* WISHLIST*/
+        .wishlist-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 60px 0;
+            background-color: #f4f4f4;
+        }
+
+        .wishlist-box {
+            width: 250px;
+            height: 250px;
+            background: white;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .wishlist-box:hover {
+            transform: scale(1.05);
+        }
+
+        .wishlist-icon {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<script>
+    // Array penyimpanan wishlist (sementara, tanpa database)
+    let wishlist = [];
+
+    // Fungsi menambah destinasi ke wishlist
+    function tambahWishlist(namaDestinasi) {
+        if (!wishlist.includes(namaDestinasi)) {
+            wishlist.push(namaDestinasi);
+            alert(namaDestinasi + " berhasil ditambahkan ke wishlist!");
+            updateWishlistButton();
+        } else {
+            alert(namaDestinasi + " sudah ada di wishlist!");
+        }
+    }
+
+    // Update jumlah di menu navbar
+    function updateWishlistButton() {
+        const btn = document.getElementById("wishlistBtn");
+        btn.innerText = "Wishlist (" + wishlist.length + ")";
+    }
+</script>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo"><img src="Gemini_Generated_Image_h0z3whh0z3whh0z3-removebg-preview 2.png" alt="Logo" />
+            <span>Eksplore</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="RekomendasiDestinasi_html">Rekomendasi Destinasi</a></li>
+                <li><a href="PopulerDestinasi.html">Populer Destinasi</a></li>
+                <li><a id="wishlistBtn" href="wishlist.html">Wishlist (0)</a></li>
+            </ul>
+        </nav>
+        <!-- PROFILE SECTION ADDED -->
+        <div class="profile-container">
+            <!-- Foto profil otomatis tampil setelah user login -->
+            <img src="profile.png" alt="User Profile" class="profile-img" id="profilePic" style="display:none;">
+        </div>
+    </header>
+
+
+    <!--search-->
+    <section class="hero">
+        <h2>Temukan Destinasi<br>Populer<br>Di Pulau Bali</h2>
+
+        <div class="search-box">
+            <input type="text" placeholder="Cari destinasi impian...">
+            <button class="search-btn">
+                <img src="logo_search.png" alt="search">
+            </button>
+        </div>
+    </section>
+
+
+    <!--SECTION KEUNIKAN BALI -->
+    <div class="keunikan-bali">
+        <h3>Keunikan Bali yang menawan</h3>
+    </div>
+    <section class="keunikan-bali">
+        <div>
+
+            <p>
+                Tidak ada tempat wisata lain seperti Bali. Perpaduan ajaib antara budaya yang penuh warna, penduduk
+                yang
+                ramah, alam yang menakjubkan, ragam aktivitas yang tak terhitung jumlahnya, cuaca tropis, kuliner
+                yang
+                lezat, kehidupan malam yang semarak, dan akomodasi yang indah menjadikannya pilihan terbaik sebagai
+                destinasi wisata.
+            </p>
+            <p>
+                Beberapa platform pariwisata dunia juga telah menganugerahkan berbagai macam penghargaan kepada Bali
+                sebagai salah satu destinasi favorit yang setidaknya harus dikunjungi sekali dalam hidup Anda.
+                Berapapun
+                usia, anggaran liburan, maupun kegiatan favorit Anda, selalu akan ada sesuatu yang menyenangkan
+                untuk
+                dijelajahi dan dinikmati oleh semua kalangan.
+
+            </p>
+            <p>
+                Bali.com berdedikasi penuh untuk membuat perencanaan perjalanan Anda lebih mudah. Jelajahi tips yang
+                dapat diandalkan & bermanfaat tentang Bali sehingga Anda dapat menikmati pengalaman liburan terbaik.
+            </p>
+        </div>
+        <img src="GWK.png" alt="Bali" />
+    </section>
+    <!-- REKOMENDASI DESTINASI -->
+    <section class="cards">
+        <h3>Rekomendasi Destinasi</h3>
+
+        <div class="filter">
+            <select>
+                <option>Nama Destinasi</option>
+            </select>
+            <select>
+                <option>Kategori Wisata</option>
+            </select>
+            <select>
+                <option>Lokasi</option>
+            </select>
+            <select>
+                <option>Rating</option>
+            </select>
+        </div>
+
+        <div class="cards-wrapper">
+            <!-- tombol panah kiri -->
+            <div class="scroll-btn left" onclick="scrollCards(-300)" aria-hidden="true">◀</div>
+
+            <!-- container yang discroll horizontal -->
+            <div class="card-container" id="cardContainer">
+                <div class="card">
+                    <img src="PantaiKuta.png" alt="Pantai Kuta">
+                    <div class="card-title">Pantai Kuta</div>
+                    <div class="rating">★★★★★</div>
+                    <button onclick="tambahWishlist('Pantai Kuta')">+ Wishlist</button>
+                </div>
+
+                <div class="card">
+                    <img src="GunungAgung.png" alt="Gunung Agung">
+                    <div class="card-title">Gunung Agung</div>
+                    <div class="rating">★★★★☆</div>
+                    <button onclick="tambahWishlist('Gunung Agung')">+ Wishlist</button>
+                </div>
+
+                <div class="card">
+                    <img src="pantai_kuta_bali_1200 2.png" alt="Tegalalang">
+                    <div class="card-title">Tegalalang</div>
+                    <div class="rating">★★★★☆</div>
+                    <button onclick="tambahWishlist('Tegalalang')">+ Wishlist</button>
+                </div>
+
+                <div class="card">
+                    <img src="PuraTanahLot.png" alt="Pura Tanah Lot">
+                    <div class="card-title">Pura Tanah Lot</div>
+                    <div class="rating">★★★★★</div>
+                    <button onclick="tambahWishlist('Pura Tanah Lot')">+ Wishlist</button>
+                </div>
+
+                <div class="card">
+                    <img src="mONKEYfOREST.png" alt="Monkey Forest">
+                    <div class="card-title">Monkey Forest</div>
+                    <div class="rating">★★★★★</div>
+                    <button onclick="tambahWishlist('Monkey Forest')">+ Wishlist</button>
+                </div>
+
+                <div class="card">
+                    <img src="DesaPanglipuran.png" alt="Desa Panglipuran">
+                    <div class="card-title">Desa Panglipuran</div>
+                    <div class="rating">★★★★☆</div>
+                    <button onclick="tambahWishlist('Desa Panglipuran')">+ Wishlist</button>
+                </div>
+            </div>
+
+            <!-- tombol panah kanan -->
+            <div class="scroll-btn right" onclick="scrollCards(300)" aria-hidden="true">▶</div>
+        </div>
+    </section>
+
+
+    <!-- DESTINASI POPULER -->
+    <h3 class="judul-populer">Populer Destinasi</h3>
+
+    <section class="populer">
+        <img src="danau beratan.png" alt="Danau Beratan">
+
+        <div class="desc">
+            <p>Danau Beratan</p>
+            <p>Destinasi ini tidak memiliki jam tetap (buka setiap saat). Harga tiket: Rp. 40.000–100.000.
+                Waktu terbaik untuk menikmati sunrise/sunset.</p>
+            <button>Peta Lokasi</button>
+        </div>
+    </section>
+
+
+    <!-- WISHLIST-CONTAINER-->
+    <section class="wishlist-container">
+        <div class="wishlist-box">
+            <div class="wishlist-icon">+</div>
+            <button class="btn btn-dark" onclick="window.location.href='MenambahkanWishlist.html'">Tambahkan
+                wishlist</button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div>
+            <h4>Support</h4>
+            <p>Email: support@explorebali.com</p>
+        </div>
+        <div>
+            <h4>Layanan</h4>
+            <p>Rekomendasi Wisata</p>
+            <p>Panduan Destinasi</p>
+        </div>
+        <div>
+            <h4>Kontak Kami</h4>
+            <p>Telp: +62 812-3456-7890</p>
+        </div>
+    </footer>
+    </div>
+    </div>
+
+
+    </script>
+</body>
+
+</html>
